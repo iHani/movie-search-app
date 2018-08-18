@@ -7,3 +7,12 @@
   max-width: 500px;
   margin: 0 auto !important;
 }
+
+.card-img-top {
+  max-height: 350px;
+
+}
+
+.card {
+  padding: -1rem;
+}
