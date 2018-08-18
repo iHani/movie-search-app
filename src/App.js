@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { DebounceInput } from 'react-debounce-input';
 import { queryMovies } from './actions/movies';
-import NoResultFound from './components/NoResultFound'
 import './App.css';
 
-const posterPlaceHolder = '/placeholde.jpg';
+const posterPlaceHolder = '/placeholder.jpg';
 
 class App extends Component {
 
@@ -69,12 +68,14 @@ class App extends Component {
 
           {status === 'FETCHED_MOVIES' && query.trim() && <h3 className="text-left">Results of: {query}</h3>}
 
-          {status === 'FETCHED_MOVIES' && <div className="row">
-            {query && movies && movies.map(movie => (
-              <div key={movie.imdbID} className="card col-xs-5 col-sm-6 col-md-4 p-0" >
-                <img className="card-img-top" src={movie.Poster || posterPlaceHolder} alt="" />
-                <div className="card-body">
-                  <h4 className="card-title">{movie.Title}</h4>
+          {status === 'FETCHED_MOVIES' && query.trim() && movies && <div className="row">
+            {movies.map(movie => (
+              <div key={movie.imdbID} className="col-6 col-md-4">
+                <div className="card m-1 p-0">
+                  <img className="card-img-top" src={movie.Poster || posterPlaceHolder} alt="" />
+                  <div className="card-body">
+                    <h4 className="card-title">{movie.Title}</h4>
+                  </div>
                 </div>
               </div>
             ))}
