@@ -9,22 +9,3 @@ export const queryMovies = (query, page = 1) =>
 fetch(`${api}/api/search/${query}`, { headers })
 .then(res => res.json());
 
-
-// export const postPost = (post) => (
-//   fetch(`${api}/posts`, {
-//     method: 'POST',
-//     headers: {
-//       ...headers
-//     },
-//     body: JSON.stringify({ ...post }),
-//   })
-//   .then(res => res.json())
-// )
-//
-// export const deletePost = (id) => (
-//   fetch(`${api}/posts/${id}`, {
-//     method: 'DELETE',
-//     headers: { ...headers }
-//   })
-//   .then(res => res.json())
-// )
