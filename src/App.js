@@ -2,20 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { DebounceInput } from 'react-debounce-input';
 import { queryMovies } from './actions/movies';
+import MovieCard from './components/MovieCard'
 import './App.css';
-
-const posterPlaceHolder = '/placeholder.jpg';
 
 class App extends Component {
 
   state = {
     status: undefined,
     query: '',
-  }
-
-  componentDidMount () {
-    // fetch api & update the state
-
   }
 
   async updateQuery (query) {
@@ -39,12 +33,10 @@ class App extends Component {
         </header>
 
         <div className="container justify-content-center">
-
           <div className="input-group search-input m-3 pt-3">
             <div className="input-group-prepend">
               <span className="input-group-text">Search</span>
             </div>
-
             <DebounceInput
               name="search"
               type="text"
@@ -55,10 +47,8 @@ class App extends Component {
               placeholder="movie title..."
               autoFocus
             />
-
           </div>
           <hr />
-
 
           {!status && <h3>Ready to search</h3>}
 
@@ -66,19 +56,11 @@ class App extends Component {
 
           {status === 'SEARCHING' && <h3>Searching...</h3>}
 
-          {status === 'FETCHED_MOVIES' && query.trim() && <h3 className="text-left">Results of: {query}</h3>}
-
-          {status === 'FETCHED_MOVIES' && query.trim() && movies && <div className="row">
-            {movies.map(movie => (
-              <div key={movie.imdbID} className="col-6 col-md-4">
-                <div className="card m-1 p-0">
-                  <img className="card-img-top" src={movie.Poster || posterPlaceHolder} alt="" />
-                  <div className="card-body">
-                    <h4 className="card-title">{movie.Title}</h4>
-                  </div>
-                </div>
-              </div>
-            ))}
+          {status === 'FETCHED_MOVIES' && query.trim() && movies && <div>
+            <h3 className="text-left">Results for: {query}</h3>
+            <div className="row">
+              {movies.map((movie) => <MovieCard key={movie.imdbID} {...movie} />)}
+            </div>
           </div>}
 
         </div>
@@ -87,7 +69,7 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = ({ movies }) => ({
+const mapStateToProps = ({ movies = [] }) => ({
   movies,
 });
 
