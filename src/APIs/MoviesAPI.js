@@ -8,3 +8,4 @@ const headers = {
 export const queryMovies = (query, page = 1) =>
 fetch(`${api}/api/search/${query}`, { headers })
 .then(res => res.json());
+

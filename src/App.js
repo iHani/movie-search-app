@@ -5,6 +5,7 @@ import { queryMovies } from './actions/movies';
 import MovieCard from './components/MovieCard'
 import './App.css';
 
+
 class App extends Component {
 
   state = {
@@ -31,7 +32,6 @@ class App extends Component {
         <header className="header p-2">
           <h1>Movie Search App</h1>
         </header>
-
         <div className="container justify-content-center">
           <div className="input-group search-input m-3 pt-3">
             <div className="input-group-prepend">
