@@ -5,6 +5,7 @@ import { queryMovies } from './actions/movies';
 import MovieCard from './components/MovieCard'
 import './App.css';
 
+const clearXicon = '/clear_x_icon.svg';
 
 class App extends Component {
 
@@ -17,9 +18,9 @@ class App extends Component {
     this.setState({ query, status: 'SEARCHING' });
     if (query.trim()) {
       const { type } = await this.props.queryMovies(query);
-      this.setState({ status: type })
+      this.setState({ status: type });
     } else {
-      this.setState({ status: undefined })
+      this.setState({ status: undefined });
     }
   }
 
