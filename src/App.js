@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { DebounceInput } from 'react-debounce-input';
 import { queryMovies } from './actions/movies';
-import MovieCard from './components/MovieCard'
+import MovieCard from './components/MovieCard';
 import './App.css';
-
-const clearXicon = '/clear_x_icon.svg';
 
 class App extends Component {
 

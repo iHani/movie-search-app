@@ -5,6 +5,6 @@ const headers = {
   'Content-Type': 'application/json',
 };
 
-export const queryMovies = (query, page = 1) =>
-fetch(`${api}/api/search/${query}`, { headers })
+export const queryMovies = (query) =>
+fetch(`${api}/search?keyword=${query}`, { headers })
 .then(res => res.json());
