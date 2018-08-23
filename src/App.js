@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { DebounceInput } from 'react-debounce-input';
-import { queryMovies } from './actions/movies';
+import { queryMovies, refreshCache } from './actions/movies';
 import MovieCard from './components/MovieCard';
 import './App.css';
 
 class App extends Component {
 
   state = {
-    status: undefined,
+    status: 'INITIAL',
     query: '',
   }
 
@@ -22,6 +22,8 @@ class App extends Component {
     }
   }
 
+  refreshCache = () => this.props.refreshCache();
+  
   render() {
     const { query, status } = this.state;
     const { movies } = this.props;
@@ -50,7 +52,7 @@ class App extends Component {
           </div>
           <hr />
 
-          {!status && <h3>Ready to search</h3>}
+          {status === 'INITIAL' && <h3>Ready to search</h3>}
 
           {status === 'NO_RESULT_FOUND' && <h3>No results found for: {query}</h3>}
 
@@ -63,8 +65,9 @@ class App extends Component {
             </div>
           </div>}
 
-          <span className="inline small">
-            <button type="button" className="btn btn-outline-success btn-sm">/api/cache/refresh</button>
+          <span className="small mt-2 mb-5">
+              Click to refresh all cache
+              <button type="button" className="btn btn-outline-success btn-sm mt-5 mb-5" onClick={() => this.refreshCache()}>/api/cache/refresh</button>
           </span>
         </div>
       </div>
@@ -78,6 +81,7 @@ const mapStateToProps = ({ movies = [] }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   queryMovies: (query) => dispatch(queryMovies(query)),
+  refreshCache: () => dispatch(refreshCache()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
