@@ -30,6 +30,7 @@ class App extends Component {
       <div className="text-center">
         <header className="header p-2">
           <h1>Movie Search App</h1>
+
         </header>
         <div className="container justify-content-center">
           <div className="input-group search-input m-3 pt-3">
@@ -56,12 +57,15 @@ class App extends Component {
           {status === 'SEARCHING' && <h3>Searching...</h3>}
 
           {status === 'FETCHED_MOVIES' && query.trim() && movies && <div>
-            <h3 className="text-left">Results for: {query}</h3>
+            <h3 className="text-left">Results for: {query} ({movies.length})</h3>
             <div className="row">
               {movies.map((movie) => <MovieCard key={movie.imdbID} {...movie} />)}
             </div>
           </div>}
 
+          <span className="inline small">
+            <button type="button" className="btn btn-outline-success btn-sm">/api/cache/refresh</button>
+          </span>
         </div>
       </div>
     );
