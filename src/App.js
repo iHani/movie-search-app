@@ -18,12 +18,12 @@ class App extends Component {
       const { type } = await this.props.queryMovies(query);
       this.setState({ status: type });
     } else {
-      this.setState({ status: undefined });
+      this.setState({ status: 'INITIAL' });
     }
   }
 
   refreshCache = () => this.props.refreshCache();
-  
+
   render() {
     const { query, status } = this.state;
     const { movies } = this.props;
@@ -32,7 +32,6 @@ class App extends Component {
       <div className="text-center">
         <header className="header p-2">
           <h1>Movie Search App</h1>
-
         </header>
         <div className="container justify-content-center">
           <div className="input-group search-input m-3 pt-3">
@@ -65,9 +64,13 @@ class App extends Component {
             </div>
           </div>}
 
-          <span className="small mt-2 mb-5">
-              Click to refresh all cache
-              <button type="button" className="btn btn-outline-success btn-sm mt-5 mb-5" onClick={() => this.refreshCache()}>/api/cache/refresh</button>
+          <span className="small mt-2 mb-5">Click to refresh all cache
+            <button
+              type="button"
+              className="btn btn-outline-success btn-sm mt-5 mb-5 ml-1"
+              onClick={() => this.refreshCache()}>
+              /api/cache/refresh
+            </button>
           </span>
         </div>
       </div>

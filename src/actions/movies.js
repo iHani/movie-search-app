@@ -4,7 +4,7 @@ export const NO_RESULT_FOUND = 'NO_RESULT_FOUND';
 export const CACHE_REFRESHED = 'CACHE_REFRESHED';
 
 export const queryMovies = (query) => async (dispatch, getState) => {
-  console.log('getState', getState());
+  // console.log('getState', getState());
   const data = await MoviesAPI.queryMovies(query);
   if (data.error) {
     return dispatch(noResultFound());
