@@ -32,6 +32,7 @@ class App extends Component {
       <div className="text-center">
         <header className="header p-2">
           <h1>Movie Search App</h1>
+
         </header>
         <div className="container justify-content-center">
           <div className="input-group search-input m-3 pt-3">
