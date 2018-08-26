@@ -2,7 +2,7 @@
 
 This is a simple React/Redux application that allows you to make a search query to the [OMDB](https://www.omdbapi.com/) Database, and returns a list of movie posters that matches the query term.
 
-![](/src/screenshot.jpg =500x)
+![](/src/screenshot.jpg)
 
 ## Get Started
 
